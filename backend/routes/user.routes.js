@@ -12,7 +12,7 @@ const newSignUpUser = zod.object({
 })
 
 const signup = async (req, res, next) => {
-    const success = newSignUpUser.safeParse(req.body);
+    const {success} = newSignUpUser.safeParse(req.body);
     if (!success) {
         return res.status(411).json({
             message: "Email already taken / Incorrect inputs"
@@ -51,7 +51,7 @@ const newSignInUser = zod.object({
 })
 
 const signin = async (req,res,next)=>{
-    const success = newSignInUser.safeParse(req.body);
+    const {success} = newSignInUser.safeParse(req.body);
     if (!success) {
         return res.status(411).json({
             message: "Email already taken / Incorrect inputs"
