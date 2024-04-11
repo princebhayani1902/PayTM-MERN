@@ -3,7 +3,7 @@ import { connectToMongoDB } from "./db/connectToMongoDB.js";
 import dotenv from "dotenv"
 dotenv.config();
 
-import rootRouter from "./routes/user.routes.js"
+import rootRouter from "./routes/index.routes.js"
 
 
 const app = express();
