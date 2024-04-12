@@ -3,6 +3,7 @@ import zod from "zod"
 import jwt from "jsonwebtoken";
 import User from "../models/user.model.js"
 import authMiddleware from "../middleware/middleware.js";
+import Account from "../models/account.model.js";
 const router = Router();
 
 const newSignUpUser = zod.object({
@@ -33,6 +34,10 @@ const signup = async (req, res, next) => {
     });
 
     const userId = newUser._id;
+    await Account.create({
+        userId,
+        balance: 1 + Math.random() * 10000
+    })
     await newUser.save();
 
     const token = jwt.sign({
